@@ -32,7 +32,7 @@ router.get('/me', auth, async (req, res) => {
 });
 
 // @route       POST api/profile
-// @desc        Create or update user profile
+// @desc        Create or Update user profile
 // @access      Private
 router.post(
   '/',
@@ -133,7 +133,7 @@ router.get('/', async (req, res) => {
 });
 
 // @route       Get api/profile/user/:user_id
-// @desc        Get profile by user ID
+// @desc        Get profile by user ID for public viewing
 // @access      Public
 router.get('/user/:user_id', async (req, res) => {
   try {
