@@ -43,9 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "proxy": "http://localhost:5000"
 }
