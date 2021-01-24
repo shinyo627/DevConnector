@@ -34,7 +34,7 @@ const Login = ({ isAuthenticated, login, setAlert }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Sign Up</h1>
+      <h1 className='large text-primary'>Sign in</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Sign into Your Account
       </p>
