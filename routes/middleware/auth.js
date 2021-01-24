@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, config.get('jwtSecret'));
 
-    // assigning req object user object which holds key value of id: user.id
+    // assigning req object an user object which holds key value of id: user.id
     req.user = decoded.user;
     next();
   } catch (err) {
