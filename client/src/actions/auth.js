@@ -55,7 +55,8 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
     dispatch(loadUser());
   } catch (err) {
-    console.log('This is error from auth action', err);
+    // console.log('This is error from auth action', err);
+    // Below error messages come from express-validation
     const errors = err.response.data.errors;
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));

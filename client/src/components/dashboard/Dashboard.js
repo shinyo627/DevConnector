@@ -1,6 +1,7 @@
 import { useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import DashboardActions from './DashboardActions';
 import Spinner from '../layout/Spinner';
 
 import { connect } from 'react-redux';
@@ -24,7 +25,9 @@ const Dashboard = ({
         <i className='fas fa-user'></i>Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <Fragment>has</Fragment>
+        <Fragment>
+          <DashboardActions />
+        </Fragment>
       ) : (
         <Fragment>
           <p>You have not yet setup a profile, please add some info</p>

@@ -2,7 +2,7 @@ import { SET_ALERT, REMOVE_ALERT } from './types';
 import { v4 as uuidv4 } from 'uuid';
 
 // To dispatch more action.type from this action creator using thunk
-export const setAlert = (msg, alertType, timeout = 4500) => (dispatch) => {
+export const setAlert = (msg, alertType, timeout = 5000) => (dispatch) => {
   const id = uuidv4();
 
   dispatch({
