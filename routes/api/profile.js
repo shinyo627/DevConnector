@@ -4,6 +4,8 @@ const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const axios = require('axios');
 const config = require('config');
+// Normalize to give me proper url, regardless of what user entered
+const normalize = require('normalize-url');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
@@ -49,45 +51,51 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
+    // destructure the request
     const {
-      company,
       website,
-      location,
-      bio,
-      status,
-      githubusername,
       skills,
       youtube,
-      facebook,
       twitter,
       instagram,
       linkedin,
+      facebook,
+      // spread the rest of the fields we don't need to check
+      ...rest
     } = req.body;
 
-    // Build profile object
-    const profileFields = {};
-    // Assigning user.id ObjectId from authenticated user's from mongoDB after auth middleware
-    profileFields.user = req.user.id;
+    // build a profile
+    const profileFields = {
+      user: req.user.id,
+      website:
+        website && website !== ''
+          ? normalize(website, { forceHttps: true })
+          : '',
+      skills: Array.isArray(skills)
+        ? skills
+        : skills.split(',').map((skill) => ' ' + skill.trim()),
+      ...rest,
+    };
 
-    if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
-    if (location) profileFields.location = location;
-    if (bio) profileFields.bio = bio;
-    if (status) profileFields.status = status;
-    if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-      // trim for getting rid of the whitespaces from input
-      profileFields.skills = skills.split(',').map((skill) => skill.trim());
+    // Build socialFields object
+    const socialFields = { youtube, twitter, instagram, linkedin, facebook };
+
+    // normalize social fields to ensure valid url
+    //
+    for (const [key, value] of Object.entries(socialFields)) {
+      if (value && value.length > 0)
+        socialFields[key] = normalize(value, { forceHttps: true });
     }
+    // add to profileFields
+    profileFields.social = socialFields;
 
     // Build social object to assign to profileFields
-    profileFields.social = {};
-    if (youtube) profileFields.social.youtube = youtube;
-    if (twitter) profileFields.social.twitter = twitter;
-    if (facebook) profileFields.social.facebook = facebook;
-    if (linkedin) profileFields.social.linkedin = linkedin;
-    if (instagram) profileFields.social.instagram = instagram;
-
+    // profileFields.social = {};
+    // if (youtube) profileFields.social.youtube = youtube;
+    // if (twitter) profileFields.social.twitter = twitter;
+    // if (facebook) profileFields.social.facebook = facebook;
+    // if (linkedin) profileFields.social.linkedin = linkedin;
+    // if (instagram) profileFields.social.instagram = instagram;
     try {
       //   Passing ObjectId of each user document to match the user field of which Profile
       let profile = await Profile.findOne({
@@ -95,7 +103,7 @@ router.post(
       });
 
       if (profile) {
-        // Update
+        // Update the profile formData if user already had a profile
         profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
@@ -105,7 +113,7 @@ router.post(
         return res.json(profile);
       }
 
-      //   Create
+      //   Create if the user doesn't have profile
       profile = new Profile(profileFields);
 
       await profile.save();
