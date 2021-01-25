@@ -3,7 +3,7 @@ const config = require('config');
 
 // Middleware functions are just functions that has access in request/respond cycle and next is there to run once the middleware processing is done to exit
 module.exports = (req, res, next) => {
-  // Get token from header
+  // Get token from header key x-auth-token that comes from global header
   const token = req.header('x-auth-token');
 
   // Check if no token
