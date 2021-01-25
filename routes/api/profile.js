@@ -81,7 +81,6 @@ router.post(
     const socialFields = { youtube, twitter, instagram, linkedin, facebook };
 
     // normalize social fields to ensure valid url
-    //
     for (const [key, value] of Object.entries(socialFields)) {
       if (value && value.length > 0)
         socialFields[key] = normalize(value, { forceHttps: true });
