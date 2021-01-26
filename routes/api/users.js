@@ -1,6 +1,8 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
+// Normalize to give me proper url, this will fix issue with gravatar's avatar
+const normalize = require('normalize-url');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -41,12 +43,16 @@ router.post(
           .json({ errors: [{ msg: 'User already exists' }] });
       }
       // Get users gravatar before saving the user
-      const avatar = gravatar.url(email, {
-        // s is for default size, r is for rating, d: mm is default image
-        s: '200',
-        r: 'pg',
-        d: 'mm',
-      });
+      // gravatar.url() is wrapped in normalize function to fix initial issue with returning proper value source
+      const avatar = normalize(
+        gravatar.url(email, {
+          // s is for default size, r is for rating, d: mm is default image
+          s: '200',
+          r: 'pg',
+          d: 'mm',
+        }),
+        { forceHttps: true }
+      );
 
       user = new User({
         name,
