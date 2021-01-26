@@ -46,7 +46,7 @@ const EditProfile = ({
       instagram: loading || !profile.social ? '' : profile.social.instagram,
     });
     // Dependent props/state will be loading. If it loads, getCurrentProfile() and setFormData() get invoked
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   const {
     company,
