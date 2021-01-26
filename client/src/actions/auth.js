@@ -14,14 +14,14 @@ import { setAlert } from './alert';
 
 // Load User
 export const loadUser = () => async (dispatch) => {
-  // setAuthToken will va
+  // setAuthToken will take the token and set it to global header 'x-auth-token' for future requests
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
 
   try {
     const res = await axios.get('/api/auth');
-    console.log(res.data);
+    // console.log('authAction, this is logged in user', res.data);
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -46,7 +46,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   try {
     const res = await axios.post('/api/users', body, config);
 
-    console.log('what is res.data ?', res.data);
+    console.log('authAction/This should be token ?', res.data);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -55,7 +55,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
     dispatch(loadUser());
   } catch (err) {
-    // console.log('This is error from auth action', err);
+    // console.log('authAction/This is error', err);
     // Below error messages come from express-validation
     const errors = err.response.data.errors;
     if (errors) {
@@ -81,7 +81,7 @@ export const login = (email, password) => async (dispatch) => {
   try {
     const res = await axios.post('/api/auth', body, config);
 
-    console.log('what is res.data ?', res.data);
+    // console.log('authAction/This should be token', res.data);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -91,7 +91,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
-    console.log('what is err.response auth.js action', err.response);
+    // console.log('authAction/what is err.response', err.response);
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }

@@ -251,11 +251,11 @@ router.delete('/experience/:exp_id', auth, async (req, res) => {
       })
       .indexOf(req.params.exp_id);
 
+    // console.log(
+    //   'api/profile/experience/:exp_id, This is removeIndex',
+    //   removeIndex
+    // );
     // If removeIndex was not found because indexOf() returns -1 when element is not present
-    console.log(
-      'api/profile/experience/:exp_id, This is removeIndex',
-      removeIndex
-    );
     if (removeIndex < 0) {
       return res.status(400).json({ message: 'Experience not found' });
     }
@@ -343,10 +343,6 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
       .indexOf(req.params.edu_id);
 
     // If removeIndex was not found because indexOf() returns -1 when element is not present
-    console.log(
-      'api/profile/education/:edu_id, This is removeIndex',
-      removeIndex
-    );
     if (removeIndex < 0) {
       return res.status(400).json({ message: 'Education not found' });
     }
