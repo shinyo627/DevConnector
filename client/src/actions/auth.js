@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../utils/api';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -9,7 +9,6 @@ import {
   LOGOUT,
   CLEAR_PROFILE,
 } from './types';
-import setAuthToken from '../utils/setAuthToken';
 import { setAlert } from './alert';
 
 // Load User
@@ -21,7 +20,7 @@ export const loadUser = () => async (dispatch) => {
   // }
 
   try {
-    const res = await axios.get('/api/auth');
+    const res = await api.get('/api/auth');
     // console.log('authAction, this is logged in user', res.data);
     dispatch({
       type: USER_LOADED,
@@ -45,7 +44,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   const body = JSON.stringify({ name, email, password });
 
   try {
-    const res = await axios.post('/api/users', body, config);
+    const res = await api.post('/api/users', body, config);
 
     console.log('authAction/This should be token ?', res.data);
 
@@ -80,7 +79,7 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post('/api/auth', body, config);
+    const res = await api.post('/api/auth', body, config);
 
     // console.log('authAction/This should be token', res.data);
 
