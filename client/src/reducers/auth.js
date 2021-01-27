@@ -29,8 +29,9 @@ export default (state = initialState, action) => {
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      // Setting the token in localStorage
-      localStorage.setItem('token', payload.token);
+      // Not setting the token to localStorage from reducer since
+      // reducer should be pure function
+      // localStorage.setItem('token', payload.token);
       return {
         ...state,
         ...payload,
@@ -42,8 +43,8 @@ export default (state = initialState, action) => {
     case LOGIN_FAIL:
     case LOGOUT:
     case ACCOUNT_DELETED:
-      //   Delete the token from localStorage
-      localStorage.removeItem('token');
+      //   Deleting token from here too, is deprecated from here
+      // localStorage.removeItem('token');
       return {
         ...state,
         token: null,

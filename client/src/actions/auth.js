@@ -14,10 +14,11 @@ import { setAlert } from './alert';
 
 // Load User
 export const loadUser = () => async (dispatch) => {
-  // setAuthToken will take the token and set it to global header 'x-auth-token' for future requests
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
+  // Now handling token with localStorage from this action creator is
+  // also deprecated Since it should just return actions
+  // if (localStorage.token) {
+  //   setAuthToken(localStorage.token);
+  // }
 
   try {
     const res = await axios.get('/api/auth');
