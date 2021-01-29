@@ -11,7 +11,7 @@ import { getPost } from '../../actions/post';
 const Post = ({ post: { post, loading }, getPost, match }) => {
   useEffect(() => {
     getPost(match.params.id);
-  }, [getPost]);
+  }, [getPost, match.params.id]);
 
   return loading || post === null ? (
     <Spinner />

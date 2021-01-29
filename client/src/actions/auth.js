@@ -14,14 +14,14 @@ import { setAlert } from './alert';
 // Load User
 export const loadUser = () => async (dispatch) => {
   // Now handling token with localStorage from this action creator is
-  // also deprecated Since it should just return actions
+  // deprecated Since it should just return actions
   // if (localStorage.token) {
   //   setAuthToken(localStorage.token);
   // }
 
   try {
-    const res = await api.get('/api/auth');
-    // console.log('authAction, this is logged in user', res.data);
+    const res = await api.get('/auth');
+    console.log('authAction, this is logged in user', res.data);
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -35,16 +35,16 @@ export const loadUser = () => async (dispatch) => {
 
 // Register User
 export const register = ({ name, email, password }) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
+  // const config = {
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  // };
 
   const body = JSON.stringify({ name, email, password });
 
   try {
-    const res = await api.post('/api/users', body, config);
+    const res = await api.post('/users', body);
 
     console.log('authAction/This should be token ?', res.data);
 
@@ -70,16 +70,17 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
 // Login User
 export const login = (email, password) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
+  // const config = {
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  // };
 
-  const body = JSON.stringify({ email, password });
+  const body = { email, password };
+  console.log(body);
 
   try {
-    const res = await api.post('/api/auth', body, config);
+    const res = await api.post('/auth', body);
 
     // console.log('authAction/This should be token', res.data);
 

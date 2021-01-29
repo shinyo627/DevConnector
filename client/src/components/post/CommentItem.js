@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
@@ -25,7 +24,7 @@ const CommentItem = ({
         <p className='post-date'>
           Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
         </p>
-        {!auth.loading && user == auth.user._id && (
+        {!auth.loading && user === auth.user._id && (
           <button
             onClick={(e) => deleteComment(postId, _id)}
             type='button'
