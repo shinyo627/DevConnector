@@ -1,0 +1,5 @@
+{
+  "mongoURI": "mongodb+srv://shinyo627:Tlsdytjq627@devconnector.svpsd.mongodb.net/DevConnector?retryWrites=true&w=majority",
+  "jwtSecret": "Tlsdytjq627",
+  "githubToken": "4dbc4c0843036d2c6998c95aa1a76d6b9d495028"
+}

@@ -21,7 +21,7 @@ export const loadUser = () => async (dispatch) => {
 
   try {
     const res = await api.get('/auth');
-    console.log('authAction, this is logged in user', res.data);
+    // console.log('authAction, this is logged in user', res.data);
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -77,7 +77,6 @@ export const login = (email, password) => async (dispatch) => {
   // };
 
   const body = { email, password };
-  console.log(body);
 
   try {
     const res = await api.post('/auth', body);

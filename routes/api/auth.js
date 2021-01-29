@@ -71,7 +71,7 @@ router.post(
       jwt.sign(
         payload,
         config.get('jwtSecret'),
-        { expiresIn: 360000 },
+        { expiresIn: 60 * 5 },
         (err, token) => {
           if (err) throw err;
           // Instead of the token I can also assign user.id directly as json if I needed to. But in this case, it's going to be token
