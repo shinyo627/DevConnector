@@ -46,7 +46,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   try {
     const res = await api.post('/users', body);
 
-    console.log('authAction/This should be token ?', res.data);
+    // console.log('authAction/This should be token ?', res.data);
 
     dispatch({
       type: REGISTER_SUCCESS,
