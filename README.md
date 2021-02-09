@@ -1,6 +1,14 @@
-# DevConnector
-A network where developers can share their profiles and discuss 
-Created with MERN stack and Redux for state management.
-Real time chat feature is likely to be added very soon.
+#===== DevConnector =====
+A network where developers can share their profiles and discuss about ideas, problems, and new technology.
+Opened to public for viewing profiles of registered users including their social media details.
+
+Live-chat funcionality implementation per groups/projects will come in soon for authorized users.
+
+Technologies:
+
+1) JWT, and bcryptjs for security.
+2) React/Node/Express/MongoDB.
+3) Redux/thunk for manging global states and data resources.
+4) Font awesome, gravatar, normalize-url, and moment as additional technology for styling, authomatically fetching avatar image for profile image, stable url format, and formatting Date datas on UI.
 
 Link ---> https://enigmatic-gorge-55171.herokuapp.com/
