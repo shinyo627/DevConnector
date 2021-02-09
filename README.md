@@ -1,4 +1,5 @@
-#===== DevConnector =====
+===== DevConnector =====
+
 A network where developers can share their profiles and discuss about ideas, problems, and new technology.
 Opened to public for viewing profiles of registered users including their social media details.
 
