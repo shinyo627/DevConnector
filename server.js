@@ -1,14 +1,16 @@
+const path = require('path');
+const http = require('http');
 const express = require('express');
 const connectDB = require('./config/db');
-const path = require('path');
 
 const app = express();
+const server = http.createServer(app);
 
 // Connect Database
 connectDB();
 
 // Initialize Middlewares
-// express.json() middle ware is for parsing body data. Basically we can use req.body on our call
+// express.json() middleware is for parsing body data. Basically we can use data from req.body on our call
 app.use(express.json({ extended: false }));
 
 // Defined routes
@@ -30,6 +32,6 @@ if (process.env.NODE_ENV === 'production') {
 // process.env.PORT will come in when deployed to heroku otherwise we use  5000
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server listening to ${PORT}`);
 });

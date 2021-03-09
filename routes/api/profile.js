@@ -89,13 +89,6 @@ router.post(
     // add to profileFields
     profileFields.social = socialFields;
 
-    // Build social object to assign to profileFields
-    // profileFields.social = {};
-    // if (youtube) profileFields.social.youtube = youtube;
-    // if (twitter) profileFields.social.twitter = twitter;
-    // if (facebook) profileFields.social.facebook = facebook;
-    // if (linkedin) profileFields.social.linkedin = linkedin;
-    // if (instagram) profileFields.social.instagram = instagram;
     try {
       //   Passing ObjectId of each user document to match the user field of which Profile
       let profile = await Profile.findOne({
