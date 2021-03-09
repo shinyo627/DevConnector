@@ -14,6 +14,7 @@ Technologies:
 
 Link ---> https://enigmatic-gorge-55171.herokuapp.com/
 
+NOTE: Currently there's a small error when a signed-in user clicks edit profile button on developer page(https://enigmatic-gorge-55171.herokuapp.com/profiles => /profile/signeduserId).Instead of redircting the signed-in user to the '/profileform', the website returns Page not found. This pesky bug will be fixed promtly today.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 In the project directory, you can run:
