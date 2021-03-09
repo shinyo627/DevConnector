@@ -7,9 +7,17 @@ Live-chat funcionality implementation per groups/projects will come in soon for 
 
 Technologies:
 
-1) JWT, and bcryptjs for security.
+1) JWT, and bcryptjs for authentication/authorization/security.
 2) React/Node/Express/MongoDB.
 3) Redux/thunk for manging global states and data resources.
-4) Font awesome, gravatar, normalize-url, and moment as additional technology for styling, authomatically fetching avatar image for profile image, stable url format, and formatting Date datas on UI.
+4) Font awesome, gravatar, normalize-url, and moment as additional technology for styling, fetching avatar image for profile image, stable url format, and formatting Date datas on UI.
 
 Link ---> https://enigmatic-gorge-55171.herokuapp.com/
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.<br />
