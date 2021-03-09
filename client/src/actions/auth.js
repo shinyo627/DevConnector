@@ -14,7 +14,7 @@ import { setAlert } from './alert';
 // Load User
 export const loadUser = () => async (dispatch) => {
   // Now handling token with localStorage from this action creator is
-  // deprecated Since it should just return actions
+  // deprecated since it should just return actions
   // if (localStorage.token) {
   //   setAuthToken(localStorage.token);
   // }
