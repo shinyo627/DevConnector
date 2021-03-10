@@ -12,9 +12,7 @@ Technologies:
 3) Redux/thunk for manging global states and data resources.
 4) Font awesome, gravatar, normalize-url, and moment as additional technology for styling, fetching avatar image for profile image, stable url format, and formatting Date datas on UI.
 
-Link ---> https://enigmatic-gorge-55171.herokuapp.com/
-
-NOTE: Currently the deployed version has a small error found today when a signed-in user clicks edit profile button on developer page(https://enigmatic-gorge-55171.herokuapp.com/profiles ===> /profile/userId). Instead of redircting the signed-in user to the '/profileform', the website returns Page not found. Fixed version/branch will be newly pushed to heroku to fix the issue today.
+Link ---> https://damp-garden-03926.herokuapp.com/
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 In the project directory, you can run:
