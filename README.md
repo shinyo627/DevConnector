@@ -14,9 +14,3 @@ Technologies:
 
 Link ---> https://damp-garden-03926.herokuapp.com/
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-In the project directory, you can run:
-
-### `npm run dev`
-
-Runs the app in the development mode.<br />
